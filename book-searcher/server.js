@@ -2,13 +2,10 @@ const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const prodDatabaseUrl =
-  "mongodb+srv://admin:Password1@cluster0.molw3.mongodb.net/books?retryWrites=true&w=majority";
-
 const databaseUrl = "mongodb://localhost:27017";
 
 mongoose
-  .connect(prodDatabaseUrl, {
+  .connect(process.env.DATABASE_URI || databaseUrl, {
     useCreateIndex: true,
     keepAlive: 1,
     useNewUrlParser: true,
